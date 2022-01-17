@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2021-12-14T14:39:40"/>
-  <contentHeader name="KEVIN" modificationDateTime="2022-01-06T12:49:46">
+  <contentHeader name="KEVIN" modificationDateTime="2022-01-17T16:23:07">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -20,36 +20,38 @@
       <pou name="DualCarElevator" pouType="program">
         <interface>
           <localVars>
-            <variable name="C1F1LimitSw">
+            <variable name="C1F1LimitSw" address="%IX0.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C2F1LimitSw">
+            <variable name="C2F1LimitSw" address="%IX0.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C2F2LimitSw">
+            <variable name="C2F2LimitSw" address="%IX0.3">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C2F3LimitSw">
+            <variable name="C2F3LimitSw" address="%IX0.5">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C2F4LimitSw">
+            <variable name="C2F4LimitSw" address="%IX0.7">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="F2DownCall">
+            <variable name="F2DownCall" address="%IX1.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
+          </localVars>
+          <localVars>
             <variable name="C2F1MemLoc">
               <type>
                 <BOOL/>
@@ -110,16 +112,20 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C2MotorUp">
+          </localVars>
+          <localVars>
+            <variable name="C2MotorUp" address="%QX0.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C2MotorDown">
+            <variable name="C2MotorDown" address="%QX0.3">
               <type>
                 <BOOL/>
               </type>
             </variable>
+          </localVars>
+          <localVars>
             <variable name="C2MotorStops">
               <type>
                 <BOOL/>
@@ -170,76 +176,80 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="F2UpCall">
+          </localVars>
+          <localVars>
+            <variable name="F2UpCall" address="%IX1.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="F3UpCall">
+            <variable name="F3UpCall" address="%IX1.4">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="F3DownCall">
+            <variable name="F3DownCall" address="%IX1.3">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F2LimitSw">
+            <variable name="C1F2LimitSw" address="%IX0.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F3LimitSw">
+            <variable name="C1F3LimitSw" address="%IX0.4">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F4LimitSw">
+            <variable name="C1F4LimitSw" address="%IX0.6">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F1CarCall">
+            <variable name="C1F1CarCall" address="%MX0.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F2CarCall">
+            <variable name="C1F2CarCall" address="%MX0.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F3CarCall">
+            <variable name="C1F3CarCall" address="%MX0.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F4CarCall">
+            <variable name="C1F4CarCall" address="%MX0.3">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="F1UpCall">
+            <variable name="F1UpCall" address="%IX1.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="F4DownCall">
+            <variable name="F4DownCall" address="%IX1.5">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1MotorUp">
+            <variable name="C1MotorUp" address="%QX0.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1MotorDown">
+            <variable name="C1MotorDown" address="%QX0.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
+          </localVars>
+          <localVars>
             <variable name="C1MotorStops">
               <type>
                 <BOOL/>
@@ -358,6 +368,48 @@
             <variable name="C2DoorOpeningDelay">
               <type>
                 <derived name="TON"/>
+              </type>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="C1F1CarBtn" address="%IX100.0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C1F2CarBtn" address="%IX100.1">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C1F3CarBtn" address="%IX100.2">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C1F4CarBtn" address="%IX100.3">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C2F1CarBtn" address="%IX100.5">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C2F2CarBtn" address="%IX100.6">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C2F3CarBtn" address="%IX100.7">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C2F4CarBtn" address="%IX100.8">
+              <type>
+                <BOOL/>
               </type>
             </variable>
           </localVars>
@@ -4390,7 +4442,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C1F1CarCall</variable>
+              <variable>C1F1CarBtn</variable>
             </contact>
             <contact localId="24" height="20" width="21" negated="false" executionOrderId="0">
               <position x="80" y="830"/>
@@ -4406,7 +4458,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C1F2CarCall</variable>
+              <variable>C1F2CarBtn</variable>
             </contact>
             <contact localId="25" height="20" width="21" negated="false" executionOrderId="0">
               <position x="80" y="880"/>
@@ -4422,7 +4474,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C1F3CarCall</variable>
+              <variable>C1F3CarBtn</variable>
             </contact>
             <contact localId="26" height="20" width="21" negated="false" executionOrderId="0">
               <position x="80" y="930"/>
@@ -4438,7 +4490,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C1F4CarCall</variable>
+              <variable>C1F4CarBtn</variable>
             </contact>
             <coil localId="471" height="20" width="21" negated="false" storage="set">
               <position x="200" y="780"/>
@@ -4538,7 +4590,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C2F2CarCall</variable>
+              <variable>C2F2CarBtn</variable>
             </contact>
             <contact localId="31" height="20" width="21" negated="false" executionOrderId="0">
               <position x="510" y="880"/>
@@ -4554,7 +4606,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C2F3CarCall</variable>
+              <variable>C2F3CarBtn</variable>
             </contact>
             <contact localId="32" height="20" width="21" negated="false" executionOrderId="0">
               <position x="510" y="930"/>
@@ -4570,7 +4622,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C2F4CarCall</variable>
+              <variable>C2F4CarBtn</variable>
             </contact>
             <coil localId="33" height="20" width="21" negated="false" storage="set" executionOrderId="0">
               <position x="630" y="830"/>
@@ -4632,7 +4684,7 @@
               <connectionPointOut>
                 <relPosition x="21" y="10"/>
               </connectionPointOut>
-              <variable>C2F1CarCall</variable>
+              <variable>C2F1CarBtn</variable>
             </contact>
             <coil localId="38" height="20" width="21" negated="false" storage="set" executionOrderId="0">
               <position x="630" y="780"/>
@@ -5966,7 +6018,7 @@
               </connectionPointOut>
               <variable>C2F2VisMem</variable>
             </coil>
-            <coil localId="168" height="20" width="20" negated="false" storage="set" executionOrderId="0">
+            <coil localId="168" height="20" width="21" negated="false" storage="set" executionOrderId="0">
               <position x="790" y="1150"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
@@ -5976,11 +6028,11 @@
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
-                <relPosition x="20" y="10"/>
+                <relPosition x="21" y="10"/>
               </connectionPointOut>
               <variable>C2F3VisMem</variable>
             </coil>
-            <coil localId="169" height="20" width="20" negated="false" storage="set" executionOrderId="0">
+            <coil localId="169" height="20" width="21" negated="false" storage="set" executionOrderId="0">
               <position x="790" y="1210"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
@@ -5990,7 +6042,7 @@
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
-                <relPosition x="20" y="10"/>
+                <relPosition x="21" y="10"/>
               </connectionPointOut>
               <variable>C2F4VisMem</variable>
             </coil>
