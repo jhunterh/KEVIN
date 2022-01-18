@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2021-12-14T14:39:40"/>
-  <contentHeader name="KEVIN" modificationDateTime="2022-01-18T13:58:08">
+  <contentHeader name="KEVIN" modificationDateTime="2022-01-18T14:20:24">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -156,28 +156,28 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C2F1CarCall">
-              <type>
-                <BOOL/>
-              </type>
-            </variable>
-            <variable name="C2F2CarCall">
-              <type>
-                <BOOL/>
-              </type>
-            </variable>
-            <variable name="C2F3CarCall">
-              <type>
-                <BOOL/>
-              </type>
-            </variable>
-            <variable name="C2F4CarCall">
-              <type>
-                <BOOL/>
-              </type>
-            </variable>
           </localVars>
           <localVars>
+            <variable name="C2F1CarCall" address="%QX100.4">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C2F2CarCall" address="%QX100.5">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C2F3CarCall" address="%QX100.6">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="C2F4CarCall" address="%QX100.7">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
             <variable name="F2UpCall" address="%IX1.2">
               <type>
                 <BOOL/>
