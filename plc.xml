@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2021-12-14T14:39:40"/>
-  <contentHeader name="KEVIN" modificationDateTime="2022-01-17T16:23:07">
+  <contentHeader name="KEVIN" modificationDateTime="2022-01-18T13:58:08">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -208,22 +208,22 @@
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F1CarCall" address="%MX0.0">
+            <variable name="C1F1CarCall" address="%QX100.0">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F2CarCall" address="%MX0.1">
+            <variable name="C1F2CarCall" address="%QX100.1">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F3CarCall" address="%MX0.2">
+            <variable name="C1F3CarCall" address="%QX100.2">
               <type>
                 <BOOL/>
               </type>
             </variable>
-            <variable name="C1F4CarCall" address="%MX0.3">
+            <variable name="C1F4CarCall" address="%QX100.3">
               <type>
                 <BOOL/>
               </type>
