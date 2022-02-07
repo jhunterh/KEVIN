@@ -1,6 +1,8 @@
 PROGRAM DualCarElevator
   VAR
     C1F1LimitSw AT %IX0.0 : BOOL;
+    C1Location AT %QW2 : UINT;
+    C2Location AT %QW4 : UINT;
     C2F1LimitSw AT %IX0.1 : BOOL;
     C2F2LimitSw AT %IX0.3 : BOOL;
     C2F3LimitSw AT %IX0.5 : BOOL;
@@ -96,6 +98,22 @@ PROGRAM DualCarElevator
     F4DownBtn AT %IX1.5 : BOOL;
   END_VAR
   VAR
+    MOVE552_ENO : BOOL;
+    MOVE552_OUT : UINT;
+    MOVE206_ENO : BOOL;
+    MOVE206_OUT : UINT;
+    MOVE210_ENO : BOOL;
+    MOVE210_OUT : UINT;
+    MOVE237_ENO : BOOL;
+    MOVE237_OUT : UINT;
+    MOVE312_ENO : BOOL;
+    MOVE312_OUT : UINT;
+    MOVE246_ENO : BOOL;
+    MOVE246_OUT : UINT;
+    MOVE249_ENO : BOOL;
+    MOVE249_OUT : UINT;
+    MOVE306_ENO : BOOL;
+    MOVE306_OUT : UINT;
     F_TRIG1 : F_TRIG;
     F_TRIG2 : F_TRIG;
     F_TRIG3 : F_TRIG;
@@ -142,6 +160,10 @@ PROGRAM DualCarElevator
   IF NOT(C2F1LimitSw) THEN
     C2F2MemLoc := FALSE; (*reset*)
   END_IF;
+  MOVE552_OUT := MOVE(EN := C1F1MemLoc, IN := 1, ENO => MOVE552_ENO);
+  IF MOVE552_ENO THEN
+      C1Location := MOVE552_OUT;
+  END_IF;
   IF NOT(C1F1LimitSw) THEN
     C1F3MemLoc := FALSE; (*reset*)
   END_IF;
@@ -153,6 +175,10 @@ PROGRAM DualCarElevator
   END_IF;
   IF NOT(C2F1LimitSw) THEN
     C2F4MemLoc := FALSE; (*reset*)
+  END_IF;
+  MOVE206_OUT := MOVE(EN := C1F2MemLoc, IN := 2, ENO => MOVE206_ENO);
+  IF MOVE206_ENO THEN
+      C1Location := MOVE206_OUT;
   END_IF;
   IF C1F2LimitSw THEN
     C1F1MemLoc := FALSE; (*reset*)
@@ -172,6 +198,10 @@ PROGRAM DualCarElevator
   IF C2F2LimitSw THEN
     C2F3MemLoc := FALSE; (*reset*)
   END_IF;
+  MOVE210_OUT := MOVE(EN := C1F3MemLoc, IN := 3, ENO => MOVE210_ENO);
+  IF MOVE210_ENO THEN
+      C1Location := MOVE210_OUT;
+  END_IF;
   IF C1F2LimitSw THEN
     C1F4MemLoc := FALSE; (*reset*)
   END_IF;
@@ -183,6 +213,10 @@ PROGRAM DualCarElevator
   END_IF;
   IF C2F3LimitSw THEN
     C2F1MemLoc := FALSE; (*reset*)
+  END_IF;
+  MOVE237_OUT := MOVE(EN := C1F4MemLoc, IN := 4, ENO => MOVE237_ENO);
+  IF MOVE237_ENO THEN
+      C1Location := MOVE237_OUT;
   END_IF;
   IF C1F3LimitSw THEN
     C1F2MemLoc := FALSE; (*reset*)
@@ -196,6 +230,10 @@ PROGRAM DualCarElevator
   IF C2F3LimitSw THEN
     C2F3MemLoc := TRUE; (*set*)
   END_IF;
+  MOVE312_OUT := MOVE(EN := C2F1MemLoc, IN := 1, ENO => MOVE312_ENO);
+  IF MOVE312_ENO THEN
+      C2Location := MOVE312_OUT;
+  END_IF;
   IF C1F3LimitSw THEN
     C1F4MemLoc := FALSE; (*reset*)
   END_IF;
@@ -214,6 +252,10 @@ PROGRAM DualCarElevator
   IF C2F4LimitSw THEN
     C2F2MemLoc := FALSE; (*reset*)
   END_IF;
+  MOVE246_OUT := MOVE(EN := C2F2MemLoc, IN := 2, ENO => MOVE246_ENO);
+  IF MOVE246_ENO THEN
+      C2Location := MOVE246_OUT;
+  END_IF;
   IF C1F4LimitSw THEN
     C1F3MemLoc := FALSE; (*reset*)
   END_IF;
@@ -225,6 +267,14 @@ PROGRAM DualCarElevator
   END_IF;
   IF C2F4LimitSw THEN
     C2F4MemLoc := TRUE; (*set*)
+  END_IF;
+  MOVE249_OUT := MOVE(EN := C2F3MemLoc, IN := 3, ENO => MOVE249_ENO);
+  IF MOVE249_ENO THEN
+      C2Location := MOVE249_OUT;
+  END_IF;
+  MOVE306_OUT := MOVE(EN := C2F4MemLoc, IN := 4, ENO => MOVE306_ENO);
+  IF MOVE306_ENO THEN
+      C2Location := MOVE306_OUT;
   END_IF;
   IF C1F1CarBtn THEN
     C1F1VisMem := TRUE; (*set*)
