@@ -96,6 +96,7 @@ PROGRAM DualCarElevator
     F3DownBtn AT %IX1.3 : BOOL;
     F3UpBtn AT %IX1.4 : BOOL;
     F4DownBtn AT %IX1.5 : BOOL;
+    FireMode AT %QX1.3 : BOOL;
   END_VAR
   VAR
     MOVE552_ENO : BOOL;
@@ -276,64 +277,64 @@ PROGRAM DualCarElevator
   IF MOVE306_ENO THEN
       C2Location := MOVE306_OUT;
   END_IF;
-  IF C1F1CarBtn THEN
+  IF C1F1CarBtn AND NOT(FireMode) THEN
     C1F1VisMem := TRUE; (*set*)
   END_IF;
-  IF C1F1CarBtn THEN
+  IF C1F1CarBtn AND NOT(FireMode) THEN
     C1F1CarCall := TRUE; (*set*)
   END_IF;
-  IF C1F2CarBtn THEN
+  IF C1F2CarBtn AND NOT(FireMode) THEN
     C1F2VisMem := TRUE; (*set*)
   END_IF;
-  IF C1F2CarBtn THEN
+  IF C1F2CarBtn AND NOT(FireMode) THEN
     C1F2CarCall := TRUE; (*set*)
   END_IF;
-  IF C1F3CarBtn THEN
+  IF C1F3CarBtn AND NOT(FireMode) THEN
     C1F3VisMem := TRUE; (*set*)
   END_IF;
-  IF C1F3CarBtn THEN
+  IF C1F3CarBtn AND NOT(FireMode) THEN
     C1F3CarCall := TRUE; (*set*)
   END_IF;
-  IF C1F4CarBtn THEN
+  IF C1F4CarBtn AND NOT(FireMode) THEN
     C1F4VisMem := TRUE; (*set*)
   END_IF;
-  IF C1F4CarBtn THEN
+  IF C1F4CarBtn AND NOT(FireMode) THEN
     C1F4CarCall := TRUE; (*set*)
   END_IF;
-  IF F1UpBtn THEN
+  IF F1UpBtn AND NOT(FireMode) THEN
     F1UpCall := TRUE; (*set*)
   END_IF;
-  IF F1UpBtn THEN
+  IF F1UpBtn AND NOT(FireMode) THEN
     C1F1VisMem := TRUE; (*set*)
   END_IF;
-  IF F2DownBtn THEN
+  IF F2DownBtn AND NOT(FireMode) THEN
     C2F2VisMem := TRUE; (*set*)
   END_IF;
-  IF F2DownBtn THEN
+  IF F2DownBtn AND NOT(FireMode) THEN
     F2DownCall := TRUE; (*set*)
   END_IF;
-  IF F2UpBtn THEN
+  IF F2UpBtn AND NOT(FireMode) THEN
     C1F2VisMem := TRUE; (*set*)
   END_IF;
-  IF F3DownBtn THEN
+  IF F3DownBtn AND NOT(FireMode) THEN
     C2F3VisMem := TRUE; (*set*)
   END_IF;
-  IF F2UpBtn THEN
+  IF F2UpBtn AND NOT(FireMode) THEN
     F2UpCall := TRUE; (*set*)
   END_IF;
-  IF F3UpBtn THEN
+  IF F3UpBtn AND NOT(FireMode) THEN
     C1F3VisMem := TRUE; (*set*)
   END_IF;
-  IF F4DownBtn THEN
+  IF F4DownBtn AND NOT(FireMode) THEN
     C2F4VisMem := TRUE; (*set*)
   END_IF;
-  IF F3DownBtn THEN
+  IF F3DownBtn AND NOT(FireMode) THEN
     F3DownCall := TRUE; (*set*)
   END_IF;
-  IF F3UpBtn THEN
+  IF F3UpBtn AND NOT(FireMode) THEN
     F3UpCall := TRUE; (*set*)
   END_IF;
-  IF F4DownBtn THEN
+  IF F4DownBtn AND NOT(FireMode) THEN
     F4DownCall := TRUE; (*set*)
   END_IF;
   IF (C1F1LastVisMem AND C1F1VisMem OR NOT(C1F1VisMem)) AND (C1F3VisMem OR C1F4VisMem) AND C1F2MemLoc AND NOT(C1MotorStops) OR (C1F1LastVisMem OR C1F2LastVisMem) AND (C1F1VisMem OR C1F2VisMem) AND C1F4VisMem AND C1F3MemLoc AND NOT(C1MotorStops) OR (NOT(C1F1VisMem) AND NOT(C1F2VisMem) AND C1F4VisMem AND C1F3MemLoc OR (C1F2VisMem OR C1F3VisMem OR C1F4VisMem) AND C1F1MemLoc) AND NOT(C1MotorStops) THEN
@@ -412,25 +413,25 @@ PROGRAM DualCarElevator
   IF F_TRIG16.Q THEN
     C1F4LastVisMem := TRUE; (*set*)
   END_IF;
-  IF C1F1VisMem AND NOT(C1F1LimitSw) THEN
+  IF NOT(C1F1LimitSw) THEN
     C1MotorStops := TRUE; (*set*)
   END_IF;
-  IF C2F1VisMem AND NOT(C2F1LimitSw) THEN
+  IF NOT(C2F1LimitSw) THEN
     C2MotorStops := TRUE; (*set*)
   END_IF;
-  IF C1F1VisMem AND NOT(C1F1LimitSw) THEN
+  IF NOT(C1F1LimitSw) THEN
     C1F1CarCall := FALSE; (*reset*)
   END_IF;
-  IF C2F1VisMem AND NOT(C2F1LimitSw) THEN
+  IF NOT(C2F1LimitSw) THEN
     C2F1CarCall := FALSE; (*reset*)
   END_IF;
-  IF C1F1VisMem AND NOT(C1F1LimitSw) THEN
+  IF NOT(C1F1LimitSw) THEN
     F1UpCall := FALSE; (*reset*)
   END_IF;
-  IF C2F1VisMem AND NOT(C2F1LimitSw) THEN
+  IF NOT(C2F1LimitSw) THEN
     C2F1VisMem := FALSE; (*reset*)
   END_IF;
-  IF C1F1VisMem AND NOT(C1F1LimitSw) THEN
+  IF NOT(C1F1LimitSw) THEN
     C1F1VisMem := FALSE; (*reset*)
   END_IF;
   IF C1F2VisMem AND C1F2LimitSw THEN
@@ -481,25 +482,25 @@ PROGRAM DualCarElevator
   IF C2F3VisMem AND C2F3LimitSw THEN
     C2F3VisMem := FALSE; (*reset*)
   END_IF;
-  IF C1F4VisMem AND C1F4LimitSw THEN
+  IF C1F4LimitSw THEN
     C1MotorStops := TRUE; (*set*)
   END_IF;
-  IF C2F4VisMem AND C2F4LimitSw THEN
+  IF C2F4LimitSw THEN
     C2MotorStops := TRUE; (*set*)
   END_IF;
-  IF C1F4VisMem AND C1F4LimitSw THEN
+  IF C1F4LimitSw THEN
     C1F4CarCall := FALSE; (*reset*)
   END_IF;
-  IF C2F4VisMem AND C2F4LimitSw THEN
+  IF C2F4LimitSw THEN
     C2F4CarCall := FALSE; (*reset*)
   END_IF;
-  IF C1F4VisMem AND C1F4LimitSw THEN
+  IF C1F4LimitSw THEN
     C1F4VisMem := FALSE; (*reset*)
   END_IF;
-  IF C2F4VisMem AND C2F4LimitSw THEN
+  IF C2F4LimitSw THEN
     F4DownCall := FALSE; (*reset*)
   END_IF;
-  IF C2F4VisMem AND C2F4LimitSw THEN
+  IF C2F4LimitSw THEN
     C2F4VisMem := FALSE; (*reset*)
   END_IF;
   IF C1MotorStops THEN
@@ -618,28 +619,28 @@ PROGRAM DualCarElevator
   IF F_TRIG32.Q THEN
     C2F4LastVisMem := TRUE; (*set*)
   END_IF;
-  IF C2F1CarBtn THEN
+  IF C2F1CarBtn AND NOT(FireMode) THEN
     C2F1VisMem := TRUE; (*set*)
   END_IF;
-  IF C2F1CarBtn THEN
+  IF C2F1CarBtn AND NOT(FireMode) THEN
     C2F1CarCall := TRUE; (*set*)
   END_IF;
-  IF C2F2CarBtn THEN
+  IF C2F2CarBtn AND NOT(FireMode) THEN
     C2F2VisMem := TRUE; (*set*)
   END_IF;
-  IF C2F2CarBtn THEN
+  IF C2F2CarBtn AND NOT(FireMode) THEN
     C2F2CarCall := TRUE; (*set*)
   END_IF;
-  IF C2F3CarBtn THEN
+  IF C2F3CarBtn AND NOT(FireMode) THEN
     C2F3VisMem := TRUE; (*set*)
   END_IF;
-  IF C2F3CarBtn THEN
+  IF C2F3CarBtn AND NOT(FireMode) THEN
     C2F3CarCall := TRUE; (*set*)
   END_IF;
-  IF C2F4CarBtn THEN
+  IF C2F4CarBtn AND NOT(FireMode) THEN
     C2F4VisMem := TRUE; (*set*)
   END_IF;
-  IF C2F4CarBtn THEN
+  IF C2F4CarBtn AND NOT(FireMode) THEN
     C2F4CarCall := TRUE; (*set*)
   END_IF;
   IF C2MotorStops THEN
@@ -681,6 +682,84 @@ PROGRAM DualCarElevator
   END_IF;
   IF C2DoorClosingDelay.Q THEN
     C2MotorStops := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C1F2CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C2F2CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C1F3CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C2F3CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C1F4CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C2F4CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    F1UpCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    F2DownCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    F2UpCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    F3DownCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    F3UpCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    F4DownCall := FALSE; (*reset*)
+  END_IF;
+  IF NOT(C1F1LimitSw) AND FireMode THEN
+    C1F1VisMem := TRUE; (*set*)
+  END_IF;
+  IF NOT(C2F1LimitSw) AND FireMode THEN
+    C2F1VisMem := TRUE; (*set*)
+  END_IF;
+  IF C1F1LimitSw AND FireMode THEN
+    C1F1VisMem := FALSE; (*reset*)
+  END_IF;
+  IF C2F1LimitSw AND FireMode THEN
+    C2F1VisMem := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C1F2VisMem := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C2F2VisMem := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C1F3VisMem := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C2F3VisMem := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C1F4VisMem := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C2F4VisMem := FALSE; (*reset*)
+  END_IF;
+  IF NOT(C1F4LimitSw) AND NOT(C1F3LimitSw) AND NOT(C1F2LimitSw) AND NOT(C1F1LimitSw) AND FireMode THEN
+    C1MotorUp := FALSE; (*reset*)
+  END_IF;
+  IF NOT(C1F4LimitSw) AND NOT(C1F3LimitSw) AND NOT(C1F2LimitSw) AND NOT(C1F1LimitSw) AND FireMode THEN
+    C1MotorDown := TRUE; (*set*)
+  END_IF;
+  IF NOT(C2F4LimitSw) AND NOT(C2F3LimitSw) AND NOT(C2F2LimitSw) AND NOT(C2F1LimitSw) AND FireMode THEN
+    C2MotorUp := FALSE; (*reset*)
+  END_IF;
+  IF NOT(C2F4LimitSw) AND NOT(C2F3LimitSw) AND NOT(C2F2LimitSw) AND NOT(C2F1LimitSw) AND FireMode THEN
+    C2MotorDown := TRUE; (*set*)
   END_IF;
 END_PROGRAM
 
