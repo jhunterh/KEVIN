@@ -684,6 +684,12 @@ PROGRAM DualCarElevator
     C2MotorStops := FALSE; (*reset*)
   END_IF;
   IF FireMode THEN
+    C1F1CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
+    C2F1CarCall := FALSE; (*reset*)
+  END_IF;
+  IF FireMode THEN
     C1F2CarCall := FALSE; (*reset*)
   END_IF;
   IF FireMode THEN
