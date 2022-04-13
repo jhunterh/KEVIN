@@ -1,6 +1,11 @@
 PROGRAM DualCarElevator
   VAR
     C1F1LimitSw AT %IX0.0 : BOOL;
+  END_VAR
+  VAR
+    Higher : BOOL;
+  END_VAR
+  VAR
     C1Location AT %QW2 : UINT;
     C2Location AT %QW4 : UINT;
     C2F1LimitSw AT %IX0.1 : BOOL;
@@ -99,6 +104,10 @@ PROGRAM DualCarElevator
     FireMode AT %QX1.3 : BOOL;
   END_VAR
   VAR
+    C1DirUp : BOOL;
+    C1DirDown : BOOL;
+    C2DirUp : BOOL;
+    C2DirDown : BOOL;
     MOVE552_ENO : BOOL;
     MOVE552_OUT : UINT;
     MOVE206_ENO : BOOL;
@@ -147,6 +156,8 @@ PROGRAM DualCarElevator
     F_TRIG30 : F_TRIG;
     F_TRIG31 : F_TRIG;
     F_TRIG32 : F_TRIG;
+    GE584_ENO : BOOL;
+    GE584_OUT : BOOL;
   END_VAR
 
   IF NOT(C1F1LimitSw) THEN
@@ -304,29 +315,11 @@ PROGRAM DualCarElevator
   IF F1UpBtn AND NOT(FireMode) THEN
     F1UpCall := TRUE; (*set*)
   END_IF;
-  IF F1UpBtn AND NOT(FireMode) THEN
-    C1F1VisMem := TRUE; (*set*)
-  END_IF;
-  IF F2DownBtn AND NOT(FireMode) THEN
-    C2F2VisMem := TRUE; (*set*)
-  END_IF;
   IF F2DownBtn AND NOT(FireMode) THEN
     F2DownCall := TRUE; (*set*)
   END_IF;
   IF F2UpBtn AND NOT(FireMode) THEN
-    C1F2VisMem := TRUE; (*set*)
-  END_IF;
-  IF F3DownBtn AND NOT(FireMode) THEN
-    C2F3VisMem := TRUE; (*set*)
-  END_IF;
-  IF F2UpBtn AND NOT(FireMode) THEN
     F2UpCall := TRUE; (*set*)
-  END_IF;
-  IF F3UpBtn AND NOT(FireMode) THEN
-    C1F3VisMem := TRUE; (*set*)
-  END_IF;
-  IF F4DownBtn AND NOT(FireMode) THEN
-    C2F4VisMem := TRUE; (*set*)
   END_IF;
   IF F3DownBtn AND NOT(FireMode) THEN
     F3DownCall := TRUE; (*set*)
@@ -766,6 +759,68 @@ PROGRAM DualCarElevator
   END_IF;
   IF NOT(C2F4LimitSw) AND NOT(C2F3LimitSw) AND NOT(C2F2LimitSw) AND NOT(C2F1LimitSw) AND FireMode THEN
     C2MotorDown := TRUE; (*set*)
+  END_IF;
+  GE584_OUT := GE(EN := TRUE, IN1 := C2Location, IN2 := C1Location, ENO => GE584_ENO);
+  Higher := GE584_OUT;
+  IF C1MotorUp THEN
+    C1DirUp := TRUE; (*set*)
+  END_IF;
+  IF C2MotorUp THEN
+    C2DirUp := TRUE; (*set*)
+  END_IF;
+  IF C1MotorDown THEN
+    C1DirDown := TRUE; (*set*)
+  END_IF;
+  IF C2MotorDown THEN
+    C2DirDown := TRUE; (*set*)
+  END_IF;
+  IF C1F4MemLoc AND C1MotorStops OR NOT(C1F4VisMem) AND (C1F3MemLoc OR NOT(C1F3VisMem) AND C1F2MemLoc) AND C1MotorStops THEN
+    C1DirUp := FALSE; (*reset*)
+  END_IF;
+  IF C1F1MemLoc AND C1MotorStops OR NOT(C1F1VisMem) AND (C1F2MemLoc OR NOT(C1F2VisMem) AND C1F3MemLoc) AND C1MotorStops THEN
+    C1DirDown := FALSE; (*reset*)
+  END_IF;
+  IF C2F4MemLoc AND C2MotorStops OR NOT(C2F4VisMem) AND (C2F3MemLoc OR NOT(C2F3VisMem) AND C2F2MemLoc) AND C2MotorStops THEN
+    C2DirUp := FALSE; (*reset*)
+  END_IF;
+  IF C2F1MemLoc AND C2MotorStops OR NOT(C2F1VisMem) AND (C2F2MemLoc OR NOT(C2F2VisMem) AND C2F3MemLoc) AND C2MotorStops THEN
+    C2DirDown := FALSE; (*reset*)
+  END_IF;
+  IF (NOT(C2DirDown) AND NOT(C1DirDown) OR (Higher AND C2DirDown OR NOT(C2DirDown)) AND C1DirDown) AND F1UpBtn AND NOT(FireMode) THEN
+    C1F1VisMem := TRUE; (*set*)
+  END_IF;
+  IF (NOT(C1DirDown) AND C2DirDown OR NOT(Higher) AND C2DirDown AND C1DirDown) AND F1UpBtn AND NOT(FireMode) THEN
+    C2F1VisMem := TRUE; (*set*)
+  END_IF;
+  IF (C2F1MemLoc AND NOT(C1DirDown) AND C2DirDown OR (NOT(C1F1MemLoc) AND NOT(C2DirDown) OR (C2F1MemLoc AND NOT(Higher) OR NOT(C1F1MemLoc) AND Higher) AND C2DirDown) AND C1DirDown) AND F2DownBtn AND NOT(FireMode) THEN
+    C1F2VisMem := TRUE; (*set*)
+  END_IF;
+  IF (NOT(C2DirDown) AND NOT(C1DirDown) OR NOT(C2F1MemLoc) AND NOT(C1DirDown) AND C2DirDown OR (C1F1MemLoc AND NOT(C2DirDown) OR (C1F1MemLoc AND Higher OR NOT(C2F1MemLoc) AND NOT(Higher)) AND C2DirDown) AND C1DirDown) AND F2DownBtn AND NOT(FireMode) THEN
+    C2F2VisMem := TRUE; (*set*)
+  END_IF;
+  IF (NOT(C1F1MemLoc) AND NOT(C1DirUp) AND C2DirUp OR (C2F1MemLoc AND NOT(C2DirUp) OR (C2F1MemLoc AND NOT(Higher) OR NOT(C1F1MemLoc) AND Higher) AND C2DirUp) AND C1DirUp) AND F2UpBtn AND NOT(FireMode) THEN
+    C2F2VisMem := TRUE; (*set*)
+  END_IF;
+  IF (C1F1MemLoc AND NOT(C1DirUp) AND C2DirUp OR NOT(C2DirUp) AND NOT(C1DirUp) OR (NOT(C2F1MemLoc) AND NOT(C2DirUp) OR (C1F1MemLoc AND Higher OR NOT(C2F1MemLoc) AND NOT(Higher)) AND C2DirUp) AND C1DirUp) AND F2UpBtn AND NOT(FireMode) THEN
+    C1F2VisMem := TRUE; (*set*)
+  END_IF;
+  IF (C1F4MemLoc AND NOT(C1DirDown) AND C2DirDown OR (NOT(C2F4MemLoc) AND NOT(C2DirDown) OR (C1F4MemLoc AND NOT(Higher) OR NOT(C2F4MemLoc) AND Higher) AND C2DirDown) AND C1DirDown) AND F3DownBtn AND NOT(FireMode) THEN
+    C1F3VisMem := TRUE; (*set*)
+  END_IF;
+  IF (NOT(C2DirDown) AND NOT(C1DirDown) OR NOT(C1F4MemLoc) AND NOT(C1DirDown) AND C2DirDown OR (C2F4MemLoc AND NOT(C2DirDown) OR (C2F4MemLoc AND Higher OR NOT(C1F4MemLoc) AND NOT(Higher)) AND C2DirDown) AND C1DirDown) AND F3DownBtn AND NOT(FireMode) THEN
+    C2F3VisMem := TRUE; (*set*)
+  END_IF;
+  IF (NOT(C2DirUp) AND NOT(C1DirUp) OR NOT(C1F4MemLoc) AND NOT(C1DirUp) AND C2DirUp OR (C2F4MemLoc AND NOT(C2DirUp) OR (NOT(C1F1MemLoc) AND NOT(C1F2MemLoc) AND NOT(Higher) OR (C2F1MemLoc OR C2F2MemLoc) AND Higher) AND C2DirUp) AND C1DirUp) AND F3UpBtn AND NOT(FireMode) THEN
+    C2F3VisMem := TRUE; (*set*)
+  END_IF;
+  IF (C1F4MemLoc AND NOT(C1DirUp) AND C2DirUp OR (NOT(C2F4MemLoc) AND NOT(C2DirUp) OR (NOT(C2F1MemLoc) AND NOT(C2F2MemLoc) AND Higher OR (C1F1MemLoc OR C1F2MemLoc) AND NOT(Higher)) AND C2DirUp) AND C1DirUp) AND F3UpBtn AND NOT(FireMode) THEN
+    C1F3VisMem := TRUE; (*set*)
+  END_IF;
+  IF (NOT(C2DirUp) AND NOT(C1DirUp) OR (NOT(C2DirUp) OR NOT(Higher) AND C2DirUp) AND C1DirUp) AND F4DownBtn AND NOT(FireMode) THEN
+    C1F4VisMem := TRUE; (*set*)
+  END_IF;
+  IF (Higher AND C2DirUp AND C1DirUp OR NOT(C1DirUp) AND C2DirUp) AND F4DownBtn AND NOT(FireMode) THEN
+    C2F4VisMem := TRUE; (*set*)
   END_IF;
 END_PROGRAM
 
