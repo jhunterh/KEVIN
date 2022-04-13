@@ -160,32 +160,32 @@ PROGRAM DualCarElevator
     GE584_OUT : BOOL;
   END_VAR
 
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     C1F1MemLoc := TRUE; (*set*)
   END_IF;
-  IF NOT(C2F1LimitSw) THEN
+  IF C2F1LimitSw THEN
     C2F1MemLoc := TRUE; (*set*)
   END_IF;
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     C1F2MemLoc := FALSE; (*reset*)
   END_IF;
-  IF NOT(C2F1LimitSw) THEN
+  IF C2F1LimitSw THEN
     C2F2MemLoc := FALSE; (*reset*)
   END_IF;
   MOVE552_OUT := MOVE(EN := C1F1MemLoc, IN := 1, ENO => MOVE552_ENO);
   IF MOVE552_ENO THEN
       C1Location := MOVE552_OUT;
   END_IF;
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     C1F3MemLoc := FALSE; (*reset*)
   END_IF;
-  IF NOT(C2F1LimitSw) THEN
+  IF C2F1LimitSw THEN
     C2F3MemLoc := FALSE; (*reset*)
   END_IF;
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     C1F4MemLoc := FALSE; (*reset*)
   END_IF;
-  IF NOT(C2F1LimitSw) THEN
+  IF C2F1LimitSw THEN
     C2F4MemLoc := FALSE; (*reset*)
   END_IF;
   MOVE206_OUT := MOVE(EN := C1F2MemLoc, IN := 2, ENO => MOVE206_ENO);
