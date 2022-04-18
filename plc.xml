@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2021-12-14T14:39:40"/>
-  <contentHeader name="KEVIN" modificationDateTime="2022-04-13T15:00:28">
+  <contentHeader name="KEVIN" modificationDateTime="2022-04-18T13:46:49">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -498,7 +498,7 @@
                 <relPosition x="10" y="20"/>
               </connectionPointOut>
             </leftPowerRail>
-            <contact localId="2" height="20" width="20" negated="false">
+            <contact localId="2" height="20" width="21" negated="false">
               <position x="50" y="20"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
@@ -508,7 +508,7 @@
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
-                <relPosition x="20" y="10"/>
+                <relPosition x="21" y="10"/>
               </connectionPointOut>
               <variable>C1F1LimitSw</variable>
             </contact>
@@ -2271,7 +2271,7 @@
                 <relPosition x="10" y="20"/>
               </connectionPointOut>
             </leftPowerRail>
-            <contact localId="253" height="20" width="20" negated="false" executionOrderId="0">
+            <contact localId="253" height="20" width="21" negated="false" executionOrderId="0">
               <position x="440" y="20"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
@@ -2281,7 +2281,7 @@
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
-                <relPosition x="20" y="10"/>
+                <relPosition x="21" y="10"/>
               </connectionPointOut>
               <variable>C2F1LimitSw</variable>
             </contact>
@@ -11200,6 +11200,224 @@
               </connectionPointOut>
               <variable>Higher</variable>
             </contact>
+            <leftPowerRail localId="704" height="40" width="10">
+              <position x="300" y="6420"/>
+              <connectionPointOut formalParameter="">
+                <relPosition x="10" y="20"/>
+              </connectionPointOut>
+            </leftPowerRail>
+            <contact localId="705" height="20" width="21" negated="false">
+              <position x="460" y="6430"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="137">
+                  <position x="460" y="6440"/>
+                  <position x="391" y="6440"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>C1F1LimitSw</variable>
+            </contact>
+            <contact localId="137" height="20" width="21" negated="false" executionOrderId="0">
+              <position x="370" y="6430"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="704">
+                  <position x="370" y="6440"/>
+                  <position x="310" y="6440"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>FireMode</variable>
+            </contact>
+            <contact localId="706" height="20" width="21" negated="false">
+              <position x="560" y="6430"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="705">
+                  <position x="560" y="6440"/>
+                  <position x="481" y="6440"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>C1MotorUp</variable>
+            </contact>
+            <contact localId="149" height="20" width="21" negated="false" executionOrderId="0">
+              <position x="560" y="6470"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="705">
+                  <position x="560" y="6480"/>
+                  <position x="520" y="6480"/>
+                  <position x="520" y="6440"/>
+                  <position x="481" y="6440"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>C1MotorDown</variable>
+            </contact>
+            <rightPowerRail localId="707" height="80" width="10">
+              <position x="720" y="6420"/>
+              <connectionPointIn>
+                <relPosition x="0" y="20"/>
+                <connection refLocalId="708">
+                  <position x="720" y="6440"/>
+                  <position x="671" y="6440"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointIn>
+                <relPosition x="0" y="60"/>
+                <connection refLocalId="166">
+                  <position x="720" y="6480"/>
+                  <position x="670" y="6480"/>
+                </connection>
+              </connectionPointIn>
+            </rightPowerRail>
+            <coil localId="708" height="20" width="21" negated="false" storage="reset">
+              <position x="650" y="6430"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="706">
+                  <position x="650" y="6440"/>
+                  <position x="581" y="6440"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>C1MotorUp</variable>
+            </coil>
+            <coil localId="166" height="20" width="21" negated="false" storage="reset" executionOrderId="0">
+              <position x="650" y="6470"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="149">
+                  <position x="650" y="6480"/>
+                  <position x="581" y="6480"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>C1MotorDown</variable>
+            </coil>
+            <contact localId="167" height="20" width="21" negated="false" executionOrderId="0">
+              <position x="370" y="6560"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="317">
+                  <position x="370" y="6570"/>
+                  <position x="310" y="6570"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="21" y="10"/>
+              </connectionPointOut>
+              <variable>FireMode</variable>
+            </contact>
+            <contact localId="168" height="20" width="20" negated="false" executionOrderId="0">
+              <position x="560" y="6600"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="318">
+                  <position x="560" y="6610"/>
+                  <position x="520" y="6610"/>
+                  <position x="520" y="6570"/>
+                  <position x="480" y="6570"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="20" y="10"/>
+              </connectionPointOut>
+              <variable>C2MotorDown</variable>
+            </contact>
+            <coil localId="169" height="20" width="20" negated="false" storage="reset" executionOrderId="0">
+              <position x="650" y="6600"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="168">
+                  <position x="650" y="6610"/>
+                  <position x="580" y="6610"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="20" y="10"/>
+              </connectionPointOut>
+              <variable>C2MotorDown</variable>
+            </coil>
+            <leftPowerRail localId="317" height="40" width="10" executionOrderId="0">
+              <position x="300" y="6550"/>
+              <connectionPointOut formalParameter="">
+                <relPosition x="10" y="20"/>
+              </connectionPointOut>
+            </leftPowerRail>
+            <contact localId="318" height="20" width="20" negated="false" executionOrderId="0">
+              <position x="460" y="6560"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="167">
+                  <position x="460" y="6570"/>
+                  <position x="391" y="6570"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="20" y="10"/>
+              </connectionPointOut>
+              <variable>C2F1LimitSw</variable>
+            </contact>
+            <contact localId="395" height="20" width="20" negated="false" executionOrderId="0">
+              <position x="560" y="6560"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="318">
+                  <position x="560" y="6570"/>
+                  <position x="480" y="6570"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="20" y="10"/>
+              </connectionPointOut>
+              <variable>C2MotorUp</variable>
+            </contact>
+            <rightPowerRail localId="396" height="80" width="10" executionOrderId="0">
+              <position x="720" y="6550"/>
+              <connectionPointIn>
+                <relPosition x="0" y="20"/>
+                <connection refLocalId="397">
+                  <position x="720" y="6570"/>
+                  <position x="671" y="6570"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointIn>
+                <relPosition x="0" y="60"/>
+                <connection refLocalId="169">
+                  <position x="720" y="6610"/>
+                  <position x="671" y="6610"/>
+                </connection>
+              </connectionPointIn>
+            </rightPowerRail>
+            <coil localId="397" height="20" width="20" negated="false" storage="reset" executionOrderId="0">
+              <position x="650" y="6560"/>
+              <connectionPointIn>
+                <relPosition x="0" y="10"/>
+                <connection refLocalId="395">
+                  <position x="650" y="6570"/>
+                  <position x="580" y="6570"/>
+                </connection>
+              </connectionPointIn>
+              <connectionPointOut>
+                <relPosition x="20" y="10"/>
+              </connectionPointOut>
+              <variable>C2MotorUp</variable>
+            </coil>
           </LD>
         </body>
       </pou>

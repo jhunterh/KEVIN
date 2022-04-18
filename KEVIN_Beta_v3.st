@@ -703,8 +703,14 @@ PROGRAM DualCarElevator
   IF FireMode THEN
     F1UpCall := FALSE; (*reset*)
   END_IF;
+  IF C1MotorUp AND C1F1LimitSw AND FireMode THEN
+    C1MotorUp := FALSE; (*reset*)
+  END_IF;
   IF FireMode THEN
     F2DownCall := FALSE; (*reset*)
+  END_IF;
+  IF C1MotorDown AND C1F1LimitSw AND FireMode THEN
+    C1MotorDown := FALSE; (*reset*)
   END_IF;
   IF FireMode THEN
     F2UpCall := FALSE; (*reset*)
@@ -712,8 +718,14 @@ PROGRAM DualCarElevator
   IF FireMode THEN
     F3DownCall := FALSE; (*reset*)
   END_IF;
+  IF C2MotorUp AND C2F1LimitSw AND FireMode THEN
+    C2MotorUp := FALSE; (*reset*)
+  END_IF;
   IF FireMode THEN
     F3UpCall := FALSE; (*reset*)
+  END_IF;
+  IF C2MotorDown AND C2F1LimitSw AND FireMode THEN
+    C2MotorDown := FALSE; (*reset*)
   END_IF;
   IF FireMode THEN
     F4DownCall := FALSE; (*reset*)
