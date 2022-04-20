@@ -406,25 +406,25 @@ PROGRAM DualCarElevator
   IF F_TRIG16.Q THEN
     C1F4LastVisMem := TRUE; (*set*)
   END_IF;
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     C1MotorStops := TRUE; (*set*)
   END_IF;
-  IF NOT(C2F1LimitSw) THEN
+  IF C2F1LimitSw THEN
     C2MotorStops := TRUE; (*set*)
   END_IF;
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     C1F1CarCall := FALSE; (*reset*)
   END_IF;
-  IF NOT(C2F1LimitSw) THEN
+  IF C2F1LimitSw THEN
     C2F1CarCall := FALSE; (*reset*)
   END_IF;
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     F1UpCall := FALSE; (*reset*)
   END_IF;
-  IF NOT(C2F1LimitSw) THEN
+  IF C2F1LimitSw THEN
     C2F1VisMem := FALSE; (*reset*)
   END_IF;
-  IF NOT(C1F1LimitSw) THEN
+  IF C1F1LimitSw THEN
     C1F1VisMem := FALSE; (*reset*)
   END_IF;
   IF C1F2VisMem AND C1F2LimitSw THEN

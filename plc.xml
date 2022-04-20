@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2021-12-14T14:39:40"/>
-  <contentHeader name="KEVIN" modificationDateTime="2022-04-18T13:58:47">
+  <contentHeader name="KEVIN" modificationDateTime="2022-04-20T14:40:51">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -4196,7 +4196,7 @@
                 <relPosition x="10" y="20"/>
               </connectionPointOut>
             </leftPowerRail>
-            <contact localId="98" height="20" width="21" negated="true" executionOrderId="0">
+            <contact localId="98" height="20" width="20" negated="false" executionOrderId="0">
               <position x="50" y="2320"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
@@ -4206,7 +4206,7 @@
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
-                <relPosition x="21" y="10"/>
+                <relPosition x="20" y="10"/>
               </connectionPointOut>
               <variable>C1F1LimitSw</variable>
             </contact>
@@ -4274,7 +4274,7 @@
                 <relPosition x="10" y="20"/>
               </connectionPointOut>
             </leftPowerRail>
-            <contact localId="478" height="20" width="21" negated="true" executionOrderId="0">
+            <contact localId="478" height="20" width="20" negated="false" executionOrderId="0">
               <position x="440" y="2320"/>
               <connectionPointIn>
                 <relPosition x="0" y="10"/>
@@ -4284,7 +4284,7 @@
                 </connection>
               </connectionPointIn>
               <connectionPointOut>
-                <relPosition x="21" y="10"/>
+                <relPosition x="20" y="10"/>
               </connectionPointOut>
               <variable>C2F1LimitSw</variable>
             </contact>
