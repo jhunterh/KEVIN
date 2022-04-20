@@ -140,6 +140,20 @@ PROGRAM DualCarElevator
     F_TRIG14 : F_TRIG;
     F_TRIG15 : F_TRIG;
     F_TRIG16 : F_TRIG;
+    R_TRIG1 : R_TRIG;
+    R_TRIG2 : R_TRIG;
+    R_TRIG3 : R_TRIG;
+    R_TRIG4 : R_TRIG;
+    R_TRIG5 : R_TRIG;
+    R_TRIG6 : R_TRIG;
+    R_TRIG7 : R_TRIG;
+    R_TRIG8 : R_TRIG;
+    R_TRIG9 : R_TRIG;
+    R_TRIG10 : R_TRIG;
+    R_TRIG11 : R_TRIG;
+    R_TRIG12 : R_TRIG;
+    R_TRIG13 : R_TRIG;
+    R_TRIG14 : R_TRIG;
     F_TRIG17 : F_TRIG;
     F_TRIG18 : F_TRIG;
     F_TRIG19 : F_TRIG;
@@ -406,25 +420,32 @@ PROGRAM DualCarElevator
   IF F_TRIG16.Q THEN
     C1F4LastVisMem := TRUE; (*set*)
   END_IF;
-  IF C1F1LimitSw THEN
+  R_TRIG1(CLK := C1F1LimitSw);
+  IF C1F1VisMem AND C1F1LimitSw OR R_TRIG1.Q THEN
     C1MotorStops := TRUE; (*set*)
   END_IF;
-  IF C2F1LimitSw THEN
+  R_TRIG2(CLK := C2F1LimitSw);
+  IF C2F1VisMem AND C2F1LimitSw OR R_TRIG2.Q THEN
     C2MotorStops := TRUE; (*set*)
   END_IF;
-  IF C1F1LimitSw THEN
+  R_TRIG3(CLK := C1F1LimitSw);
+  IF C1F1VisMem AND C1F1LimitSw OR R_TRIG3.Q THEN
     C1F1CarCall := FALSE; (*reset*)
   END_IF;
-  IF C2F1LimitSw THEN
+  R_TRIG4(CLK := C2F1LimitSw);
+  IF C2F1VisMem AND C2F1LimitSw OR R_TRIG4.Q THEN
     C2F1CarCall := FALSE; (*reset*)
   END_IF;
-  IF C1F1LimitSw THEN
+  R_TRIG5(CLK := C1F1LimitSw);
+  IF C1F1VisMem AND C1F1LimitSw OR R_TRIG5.Q THEN
     F1UpCall := FALSE; (*reset*)
   END_IF;
-  IF C2F1LimitSw THEN
+  R_TRIG6(CLK := C2F1LimitSw);
+  IF C2F1VisMem AND C2F1LimitSw OR R_TRIG6.Q THEN
     C2F1VisMem := FALSE; (*reset*)
   END_IF;
-  IF C1F1LimitSw THEN
+  R_TRIG7(CLK := C1F1LimitSw);
+  IF C1F1VisMem AND C1F1LimitSw OR R_TRIG7.Q THEN
     C1F1VisMem := FALSE; (*reset*)
   END_IF;
   IF C1F2VisMem AND C1F2LimitSw THEN
@@ -475,25 +496,32 @@ PROGRAM DualCarElevator
   IF C2F3VisMem AND C2F3LimitSw THEN
     C2F3VisMem := FALSE; (*reset*)
   END_IF;
-  IF C1F4LimitSw THEN
+  R_TRIG8(CLK := C1F4LimitSw);
+  IF C1F4VisMem AND C1F4LimitSw OR R_TRIG8.Q THEN
     C1MotorStops := TRUE; (*set*)
   END_IF;
-  IF C2F4LimitSw THEN
+  R_TRIG9(CLK := C2F4LimitSw);
+  IF C2F4VisMem AND C2F4LimitSw OR R_TRIG9.Q THEN
     C2MotorStops := TRUE; (*set*)
   END_IF;
-  IF C1F4LimitSw THEN
+  R_TRIG10(CLK := C1F4LimitSw);
+  IF C1F4VisMem AND C1F4LimitSw OR R_TRIG10.Q THEN
     C1F4CarCall := FALSE; (*reset*)
   END_IF;
-  IF C2F4LimitSw THEN
+  R_TRIG11(CLK := C2F4LimitSw);
+  IF C2F4VisMem AND C2F4LimitSw OR R_TRIG11.Q THEN
     C2F4CarCall := FALSE; (*reset*)
   END_IF;
-  IF C1F4LimitSw THEN
+  R_TRIG12(CLK := C1F4LimitSw);
+  IF C1F4VisMem AND C1F4LimitSw OR R_TRIG12.Q THEN
     C1F4VisMem := FALSE; (*reset*)
   END_IF;
-  IF C2F4LimitSw THEN
+  R_TRIG13(CLK := C2F4LimitSw);
+  IF C2F4VisMem AND C2F4LimitSw OR R_TRIG13.Q THEN
     F4DownCall := FALSE; (*reset*)
   END_IF;
-  IF C2F4LimitSw THEN
+  R_TRIG14(CLK := C2F4LimitSw);
+  IF C2F4VisMem AND C2F4LimitSw OR R_TRIG14.Q THEN
     C2F4VisMem := FALSE; (*reset*)
   END_IF;
   IF C1MotorStops THEN
